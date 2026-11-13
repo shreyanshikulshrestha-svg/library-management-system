@@ -35,6 +35,7 @@ To design and develop a responsive web application that allows library staff to 
 **students**: `id` (PK), `full_name`, `email` (unique), `enrollment_no` (unique), `phone`, `registered_on`
 
 **issues**: `id` (PK), `book_id` (FK → books), `student_id` (FK → students), `issue_date`, `due_date`, `return_date`, `fine_amount`, `status` (`Issued` / `Returned`)
+<img width="1209" height="547" alt="image (2)" src="https://github.com/user-attachments/assets/7fed0d53-0fb7-4947-b5ab-290eef450cad" />
 
 Relationships: one student → many issues; one book → many issues. Foreign keys use `ON DELETE RESTRICT` so history is never orphaned.
 
@@ -68,7 +69,7 @@ library_major_project/
 4. Open `http://localhost/library_major_project/` in your browser.
 5. If your MySQL root user has a password, change `DB_PASS` in `includes/init.php`.
 
-## 7. Test cases (fill in the Result column while testing and take screenshots)
+## 7. Test cases 
 
 | # | Feature | Test input | Expected output | Result |
 |---|---|---|---|---|
@@ -100,11 +101,6 @@ library_major_project/
 - Validation on both client (JavaScript) and server (PHP).
 - Database transactions with row locking when issuing and returning books.
 
-## 9. Viva preparation
-
-- **Why validate in both JavaScript and PHP?** JavaScript gives instant feedback; PHP is the real safety net because client code can be bypassed.
-- **What are prepared statements?** SQL and data are sent separately, so user input can never change the query.
-- **Why `ON DELETE RESTRICT`?** To stop deletion of books or students that already have issue history.
-- **Why a transaction when issuing?** Inserting the record and reducing stock must both succeed or both fail; `FOR UPDATE` stops two users taking the last copy.
-- **How is the fine calculated?** `days late × Rs. 5`, where days late = return date − due date (zero if on time).
+- 
 - **Possible future work:** librarian login, email reminders for due dates, book reservations, reports export.
+<img width="1209" height="662" alt="image (1)" src="https://github.com/user-attachments/assets/69267615-6a31-4547-8ecb-7c681396936f" />
